@@ -3,17 +3,34 @@ from strategies import *
 from tqdm import tqdm
 from QLearning import QLearning
 
-bag=[Periodic("D"), HardMajority(), Tft(), Spiteful(),  Gradual()]
+bagTrain=[Periodic("D"), HardMajority(), Tft(), Spiteful(),  Gradual(), QLearning(True)]
+bag = [Periodic("D"), HardMajority(), Tft(), Spiteful(),  Gradual(), QLearning(False)]
 
-for _ in tqdm(range(100000), desc = "Training...") :
-    m = Meeting(g, QLearning(True), Tft(), length=10)
+for _ in tqdm(range(1000), desc = "Training...") :
+    t= Tournament(g,bagTrain)
+    t.run()
+
+t = Tournament(g, bag)
+t.run()
+print(t.matrix)
+
+
+
+"""
+
+for _ in tqdm(range(10000), desc = "Training...") :
+    m = Meeting(g, QLearning(True), Tft(), length=2)
     m.run()
 
-m = Meeting(g, QLearning(False), Tft(), length=10)
+m = Meeting(g, QLearning(False), Tft(), length=2)
 m.run()
 m.prettyPrint()
 
 QLearning.exportQTable()
+"""
+
+
+
 """
 t= Tournament(g,bag)        # default: length=1000
 e= Ecological(t)            # default: pop=100

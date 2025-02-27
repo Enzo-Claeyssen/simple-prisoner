@@ -24,9 +24,9 @@ class QLearning(Strategy) :
         self.memory = memory
         self.__epsilon = 1
         self.__reducingFactor = 0.95
-        self.__decayRate = 0.00005
+        self.__decayRate = 0.0005
         self.__numberOfDecay = 0
-        self.__learningRate = 0.7
+        self.__learningRate = 0.5
     
     
     def clone(self) :
@@ -66,7 +66,6 @@ class QLearning(Strategy) :
                 action = self.__strActionToIntAction(myActions[i])
                 reward = myScore * (self.__reducingFactor ** (n-1-i))
                 self.learn(state, action, reward)
-                
             
     
     def learn(self, state, action, reward) :
@@ -84,6 +83,7 @@ class QLearning(Strategy) :
         
         QLearning.__QTable[initialState][action] = expectedCumulativeReward + self.__learningRate * (error)
         self.decayEpsilon()
+        
     
     @staticmethod
     def importQTable() :
