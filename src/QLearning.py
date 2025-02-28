@@ -23,10 +23,10 @@ class QLearning(Strategy) :
         self.trainingMode = trainingMode
         self.memory = memory
         self.__epsilon = 1
-        self.__reducingFactor = 0.99
-        self.__decayRate = 0.0005
+        self.__reducingFactor = 1.05
+        self.__decayRate = 0.000005
         self.__numberOfDecay = 0
-        self.__learningRate = 0.5
+        self.__learningRate = 0.3
     
     
     def clone(self) :
