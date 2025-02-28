@@ -23,7 +23,7 @@ class QLearning(Strategy) :
         self.trainingMode = trainingMode
         self.memory = memory
         self.__epsilon = 1
-        self.__reducingFactor = 0.95
+        self.__reducingFactor = 0.99
         self.__decayRate = 0.0005
         self.__numberOfDecay = 0
         self.__learningRate = 0.5

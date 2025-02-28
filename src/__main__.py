@@ -3,6 +3,10 @@ from strategies import *
 from tqdm import tqdm
 from QLearning import QLearning
 
+
+
+
+
 bagTrain=[Periodic("D"), HardMajority(), Tft(), Spiteful(),  Gradual(), QLearning(True)]
 bag = [Periodic("D"), HardMajority(), Tft(), Spiteful(),  Gradual(), QLearning(False)]
 
@@ -15,8 +19,12 @@ t.run()
 print(t.matrix)
 
 
+QLearning.exportQTable()
+
+
 
 """
+TRAINING MEETING - FIXED OPPONENT
 
 for _ in tqdm(range(10000), desc = "Training...") :
     m = Meeting(g, QLearning(True), Tft(), length=2)
